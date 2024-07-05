@@ -2,11 +2,8 @@ import * as THREE from "three";
 import * as OBC from "@thatopen/components";
 import * as OBF from "@thatopen/components-front";
 import * as BUI from "@thatopen/ui";
-import projectInformation from "./components/Panels/ProjectInformation";
 import elementData from "./components/Panels/Selection";
-import settings from "./components/Panels/Settings";
 import load from "./components/Toolbars/Sections/Import";
-import help from "./components/Panels/Help";
 import camera from "./components/Toolbars/Sections/Camera";
 import selection from "./components/Toolbars/Sections/Selection";
 import { AppManager } from "./bim-components";
@@ -108,7 +105,6 @@ fragments.onFragmentsLoaded.add(async (model) => {
   }, 50);
 });
 
-const projectInformationPanel = projectInformation(components);
 const elementDataPanel = elementData(components);
 
 const toolbar = BUI.Component.create(() => {
@@ -121,31 +117,15 @@ const toolbar = BUI.Component.create(() => {
   `;
 });
 
-const leftPanel = BUI.Component.create(() => {
-  return BUI.html`
-    <bim-tabs switchers-full>
-      <bim-tab name="project" label="Project" icon="ph:building-fill">
-        ${projectInformationPanel}
-      </bim-tab>
-      <bim-tab name="settings" label="Settings" icon="solar:settings-bold">
-        ${settings(components)}
-      </bim-tab>
-      <bim-tab name="help" label="Help" icon="material-symbols:help">
-        ${help}
-      </bim-tab>
-    </bim-tabs> 
-  `;
-});
 
 const app = document.getElementById("app") as BUI.Grid;
 app.layouts = {
   main: {
     template: `
       "leftPanel viewport" 1fr
-      /26rem 1fr
+      1fr
     `,
     elements: {
-      leftPanel,
       viewport,
     },
   },
