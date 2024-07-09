@@ -161,7 +161,9 @@ window.addEventListener("ifcLoadEvent", async (event: any) => {
   const { name, payload } = event.detail;
   if (name === "openModel") {
     const { name, buffer } = payload;
+    console.log(buffer);
     const model = await ifcLoader.load(buffer, name);
+    console.log(model);
     const scene = world.scene.three;
     scene.add(model);
   }
