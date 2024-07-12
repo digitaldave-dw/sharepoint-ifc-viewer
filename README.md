@@ -1,1 +1,1 @@
-# sharepoint-ifc-viewer
+# Sharepoint-ifc-viewer
